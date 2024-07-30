@@ -1,0 +1,157 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f50c0c;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: lightgray;
+}
+
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: whitesmoke;
+    top: 0;
+    position: sticky;
+    box-shadow: 0px 0px 5px black;
+    z-index: 1000;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Icon container for bar and x icons */
+.icon-container {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+/* Icons */
+.icon {
+    font-size: 25px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icon-bounce-rotate {
+    animation: bounceRotate 0.3s;
+}
+
+/* Keyframes for bounce and rotate animation */
+@keyframes bounceRotate {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(180deg);
+    }
+}
+
+/* Logo container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.img {
+    height: 50px;
+    max-width: 100%;
+}
+
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    padding-right: 30px;
+}
+
+/* Style the dropdown button */
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    outline: none;
+    padding: 10px;
+}
+
+/* Style the arrow icon */
+.dropbtn::after {
+    content: '▼';
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Hide the dropdown content by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: -30%;
+}
+
+/* Style the dropdown links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Sidebar styles */
+.sidebar {
+    background: whitesmoke;
+    height: 100vh;
+    width: 300px;
+    box-shadow: 0px 0px 5px black;
+    position: fixed;
+    top: 0;
+    left: -300px; /* Initially hidden off-screen */
+    transition: left 0.3s ease; /* Smooth transition */
+}
+
+.sidebar-visible {
+    left: 0; /* Show sidebar */
+}
+
+/* Adjust sidebar width when taskbar is hidden (responsive design) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 250px; /* Adjust width for smaller screens */
+    }
+}
