@@ -4,8 +4,18 @@
 
 <!-- sidebar -->
 <div class="sidebar" id="sidebar">
-         <!-- Sidebar content goes here -->
-     </div>
+    <a href="#" class="side_list">DASHBOARD</a>
+
+    <h1 class="side_list2">MANAGE SECTION</h1>
+    <ul class="side_list3">
+        <li><a href="#"><i class="fa-solid fa-plus" style="margin-right: 15px;"></i>Add Section</a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>Manage Section</a></li>
+    </ul>
+
+    
+</div>
+
 
      <script>
         const barIcon = document.getElementById('bar-icon');
