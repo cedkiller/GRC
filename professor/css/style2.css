@@ -155,7 +155,6 @@ html {
     background-color: #ddd;
 }
 
-/* Sidebar styles */
 .sidebar {
     background: white;
     height: 100vh;
@@ -163,13 +162,13 @@ html {
     box-shadow: 0px 0px 15px lightgray;
     position: fixed;
     top: 0;
-    left: -300px; /* Initially hidden off-screen */
+    left: 0; /* Make sidebar visible by default */
     transition: left 0.3s ease; /* Smooth transition */
     padding: 20px;
 }
 
-.sidebar-visible {
-    left: 0; /* Show sidebar */
+.sidebar-hidden {
+    left: -300px; /* Hide sidebar */
 }
 
 /* Adjust sidebar width when taskbar is hidden (responsive design) */
