@@ -22,10 +22,10 @@
         </div>
 
         <div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
+            <button class="dropbtn">Admin</button>
             <div class="dropdown-content">
                 <a href="#">Admin Profile</a>
-                <a href="#">Logout</a>
+                <a href="./logout.php">Logout</a>
             </div>
         </div>
     </div>
