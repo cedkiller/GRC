@@ -171,7 +171,6 @@ html {
     left: -300px; /* Hide sidebar */
 }
 
-
 /* Adjust sidebar width when taskbar is hidden (responsive design) */
 @media (max-width: 768px) {
     .sidebar {
