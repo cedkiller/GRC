@@ -44,7 +44,7 @@ include("./conn.php");
 								<input type="password" class="input" name="password" required>
 							</div>
 						</div>
-						<a href="./forgot.php">Forgot Password?</a>
+						<a href="./forgot2.php">Forgot Password?</a>
 						<input type="submit" class="btn" name="submit" value="Login">
 						<p>Don't have an account? <a href="#" onclick="toggleForm('student');">Register here</a></p>
 					</form>

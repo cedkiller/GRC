@@ -45,8 +45,10 @@ require 'phpmailer/src/SMTP.php';
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result);
 
-                    if ($row['stud_email'] === $email)
+                    if (isset($row['stud_email']) && $row['stud_email'] === $email)
                     {
+                        $_SESSION['forgot'] = $email;
+
                         $mail = new PHPMailer(true);
 
                         $mail->isSMTP();
@@ -68,7 +70,7 @@ require 'phpmailer/src/SMTP.php';
                         <p style="font-family: Arial, Helvetica, sans-serif;"><b>Hello!</b></p>
                         <p>You are recieving this email because we recieved a password reset request for your account.</p>
                         <br>
-                        <a href="http://localhost/mina/updatePass.php" style="text-decoration: none;"><button style = "cursor: pointer;
+                        <a href="http://localhost/GRC/reset2.php" style="text-decoration: none;"><button style = "cursor: pointer;
                         height: 40px;
                         width: 250px;
                         padding: 9px 25px;
@@ -90,8 +92,57 @@ require 'phpmailer/src/SMTP.php';
                         echo "<script>swal('Send!', 'Please check your email!', 'success');</script>";
                     }
 
-                    else {
-                        echo "<script>swal('Invalid!', 'This email is not registered!', 'error');</script>";
+                else {
+                        $sql2 = "SELECT prof_email FROM professor WHERE prof_email = '$email'";
+                        $result2 = mysqli_query($conn, $sql2);
+                        $row2 = mysqli_fetch_assoc($result2);
+
+                        if ($row2['prof_email'] === $email)
+                        {
+                            $_SESSION['forgot'] = $email;
+
+                            $mail = new PHPMailer(true);
+
+                            $mail->isSMTP();
+                            $mail->Host = 'smtp.gmail.com';
+                            $mail->SMTPAuth = true;
+                            $mail->Username = 'aniamaesantos0@gmail.com';
+                            $mail->Password = 'eskmnqzpoblrpruw';
+                            $mail->SMTPSecure = 'ssl';
+                            $mail->Port = 465;
+
+                            $mail->setFrom('aniamaesantos0@gmail.com');
+
+                            $mail->addAddress($_POST["email"]);
+
+                            $mail->isHTML(true);
+
+                            $mail->Subject = 'Reset Password';
+                            $mail->Body = '<div>
+                            <p style="font-family: Arial, Helvetica, sans-serif;"><b>Hello!</b></p>
+                            <p>You are recieving this email because we recieved a password reset request for your account.</p>
+                            <br>
+                            <a href="http://localhost/GRC/reset2.php" style="text-decoration: none;"><button style = "cursor: pointer;
+                            height: 40px;
+                            width: 250px;
+                            padding: 9px 25px;
+                            background: #f50c0c;
+                            color: white;
+                            border-radius: 10px;
+                            border: none;
+                            font-size: 17px;
+                            font-family: Arial, Helvetica, sans-serif;
+                            font-weight: bold;
+                            opacity: 1;">Reset Password</button></a>
+                            <br>
+                            <p>If you did not request a password reset, no further action is required.</p>
+                            </div>';
+
+                            $mail->send();
+
+
+                            echo "<script>swal('Send!', 'Please check your email!', 'success');</script>";
+                        }
                     }
                 }
                 ?>
