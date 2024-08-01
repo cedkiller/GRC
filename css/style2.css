@@ -224,3 +224,74 @@ a:hover{
 		justify-content: center;
 	}
 }
+
+/* animation scroll */
+
+.hidden_animation {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%);
+    transition: all 1.0s;
+}
+
+.show_animation {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+/* forgot.php */
+
+.div20 {
+	border: 2px solid black;
+	height: 200px;
+	width: 500px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 10px 10px 0px #f50c0c;
+}
+
+.exit{
+	cursor: pointer;
+	height: 30px;
+	width: 30px;
+	border-radius: 10px;
+	border: 2px solid black;
+	color: white;
+	background: #f50c0c;
+	opacity: 1;
+	transition: all 0.3s ease 0s;
+}
+
+.exit:hover {
+	opacity: 0.5;
+}
+
+.input20 {
+	height: 40px;
+	width: 370px;
+	padding-left: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 5px;
+	border: 2px solid black;
+}
+
+.submit {
+	cursor: pointer;
+	height: 40px;
+	width: 100px;
+	padding: 9px 25px;
+	background: #f50c0c;
+	color: white;
+	border-radius: 10px;
+	border: none;
+	font-size: 17px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	opacity: 1;
+	transition: all 0.3s ease 0s;
+}
+
+.submit:hover {
+	opacity: 0.5;
+}

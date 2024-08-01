@@ -6,46 +6,49 @@ include("./conn.php");
 <html>
 <head>
 	<title>GRC Examination</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style2.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script defer src="./js/app.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<img class="wave" src="img/wave.png">
 	<div class="container">
 		<div class="img">
-			<img src="./img/icon2.png" alt="icon2">
+			<img src="./img/icon2.png" alt="icon2" class="hidden_animation">
 		</div>
 		<div class="content">
 			<!-- Login Form -->
-			<div class="login-content" style="margin-left: 70px; margin-top: 200px;">
-				<form action="" method="POST">
-					<img src="./img/new3.png">
-					<h2 class="title">Welcome</h2>
-					<div class="input-div one">
-						<div class="i">
-							<i class="fas fa-user"></i>
+			<div class="hidden_animation">
+				<div class="login-content" style="margin-left: 70px; margin-top: 200px;">
+					<form action="" method="POST">
+						<img src="./img/new3.png">
+						<h2 class="title">Welcome</h2>
+						<div class="input-div one">
+							<div class="i">
+								<i class="fas fa-user"></i>
+							</div>
+							<div class="div">
+								<h5>Username</h5>
+								<input type="text" class="input" name="username" required>
+							</div>
 						</div>
-						<div class="div">
-							<h5>Username</h5>
-							<input type="text" class="input" name="username" required>
+						<div class="input-div pass">
+							<div class="i"> 
+								<i class="fas fa-lock"></i>
+							</div>
+							<div class="div">
+								<h5>Password</h5>
+								<input type="password" class="input" name="password" required>
+							</div>
 						</div>
-					</div>
-					<div class="input-div pass">
-						<div class="i"> 
-							<i class="fas fa-lock"></i>
-						</div>
-						<div class="div">
-							<h5>Password</h5>
-							<input type="password" class="input" name="password" required>
-						</div>
-					</div>
-					<a href="#">Forgot Password?</a>
-					<input type="submit" class="btn" name="submit" value="Login">
-					<p>Don't have an account? <a href="#" onclick="toggleForm('student');">Register here</a></p>
-				</form>
+						<a href="./forgot.php">Forgot Password?</a>
+						<input type="submit" class="btn" name="submit" value="Login">
+						<p>Don't have an account? <a href="#" onclick="toggleForm('student');">Register here</a></p>
+					</form>
+				</div>
 			</div>
 
 			<?php
