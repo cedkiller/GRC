@@ -1,3 +1,7 @@
+<?php
+include('../conn.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +26,9 @@
         </div>
 
         <div class="dropdown">
-            <button class="dropbtn">PROFESSOR</button>
+            <button class="dropbtn"><?php echo $_SESSION['prof_name'];?></button>
             <div class="dropdown-content">
-                <a href="#">Admin Profile</a>
+                <a href="#">Professor Profile</a>
                 <a href="./logout.php">Logout</a>
             </div>
         </div>

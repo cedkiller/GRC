@@ -110,7 +110,7 @@ html {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    left: -30px; /* Align with the dropdown button */
+    left: -70px; /* Align with the dropdown button */
     opacity: 0;
     transform: scaleY(0.9);
     transform-origin: top;

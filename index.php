@@ -20,8 +20,7 @@ include("./conn.php");
 		</div>
 		<div class="content">
 			<!-- Login Form -->
-			 <br><br><br><br><br><br><br><br>
-			<div class="login-content" style="margin-left: 70px;">
+			<div class="login-content" style="margin-left: 70px; margin-top: 230px;">
 				<form action="" method="POST">
 					<img src="./img/new3.png">
 					<h2 class="title">Welcome</h2>
@@ -45,87 +44,95 @@ include("./conn.php");
 					</div>
 					<a href="#">Forgot Password?</a>
 					<input type="submit" class="btn" name="submit" value="Login">
-					<p>Don't have an account? <a href="#" onclick="toggleForm();">Register here</a></p>
+					<p>Don't have an account? <a href="#" onclick="toggleForm('student');">Register here</a></p>
 				</form>
 			</div>
 
 			<?php
-				if (isset($_POST['submit']))
-				{
-					$email = $_POST['username'];
-					$pass = $_POST['password'];
+			if (isset($_POST['submit'])) {
+				$email = $_POST['username'];
+				$pass = $_POST['password'];
 
-					$sql = "SELECT stud_email FROM student WHERE stud_email = '$email'";
-					$result = mysqli_query($conn, $sql);
-					$row = mysqli_fetch_assoc($result);
+				// Check if user is a student
+				$sql = "SELECT stud_email FROM student WHERE stud_email = '$email'";
+				$result = mysqli_query($conn, $sql);
+				$row = mysqli_fetch_assoc($result);
 
-					if (isset($row['stud_email']) && $row['stud_email'] === $email)
-					{
-						$sql2 = "SELECT stud_pass FROM student WHERE stud_email = '$email'";
-						$result2 = mysqli_query($conn, $sql2);
-						$row2 = mysqli_fetch_assoc($result2);
+				if (isset($row['stud_email']) && $row['stud_email'] === $email) {
+					$sql2 = "SELECT stud_pass FROM student WHERE stud_email = '$email'";
+					$result2 = mysqli_query($conn, $sql2);
+					$row2 = mysqli_fetch_assoc($result2);
 
-						if ($row2['stud_pass'] === $pass)
-						{
-							$sql3 = "SELECT stud_id, stud_name FROM student WHERE stud_email = '$email'";
-							$result3 = mysqli_query($conn, $sql3);
-							$row3 = mysqli_fetch_assoc($result3);
-							$_SESSION['stud_id'] = $row3['stud_id'];
-							$_SESSION['stud_name'] = $row3['stud_name'];
-							
-							header('Location: ./student/home.php');
-							exit();
-						}
+					if ($row2['stud_pass'] === $pass) {
+						$sql3 = "SELECT stud_id, stud_name FROM student WHERE stud_email = '$email'";
+						$result3 = mysqli_query($conn, $sql3);
+						$row3 = mysqli_fetch_assoc($result3);
+						$_SESSION['stud_id'] = $row3['stud_id'];
+						$_SESSION['stud_name'] = $row3['stud_name'];
 
-						else {
-							?>
-							<script>
-								swal("Invalid!", "Invalid email or password please try again!", "error");
-							</script>
-							<?php
-						}
+						header('Location: ./student/home.php');
+						exit();
+					} else {
+						echo "<script>swal('Invalid!', 'Invalid email or password, please try again!', 'error');</script>";
 					}
+				} else {
+					// Check if user is an admin
+					$sql4 = "SELECT admin_email FROM admin_tbl WHERE admin_email = '$email'";
+					$result4 = mysqli_query($conn, $sql4);
+					$row4 = mysqli_fetch_assoc($result4);
 
-					else if (!isset($row['stud_email']) || $row['stud_email'] === NULL)
-					{
-						$sql4 = "SELECT admin_email FROM admin_tbl WHERE admin_email = '$email'";
-						$result4 = mysqli_query($conn, $sql4);
-						$row4 = mysqli_fetch_assoc($result4);
+					if (isset($row4['admin_email']) && $row4['admin_email'] === $email) {
+						$sql5 = "SELECT admin_pass FROM admin_tbl WHERE admin_email = '$email'";
+						$result5 = mysqli_query($conn, $sql5);
+						$row5 = mysqli_fetch_assoc($result5);
 
-						if (isset($row['admin_email']) && $row['admin_email'] === $email)
-						{
-							$sql5 = "SELECT admin_pass FROM admin_tbl WHERE admin_email = '$email'";
-							$result5 = mysqli_query($conn, $sql5);
-							$row5 = mysqli_fetch_assoc($result5);
+						if ($row5['admin_pass'] === $pass) {
+							$sql6 = "SELECT admin_id FROM admin_tbl WHERE admin_email = '$email'";
+							$result6 = mysqli_query($conn, $sql6);
+							$row6 = mysqli_fetch_assoc($result6);
+							$_SESSION['admin_id'] = $row6['admin_id'];
 
-							if ($row5['admin_pass'] === $pass)
-							{
-								$sql6 = "SELECT admin_id FROM admin_tbl WHERE admin_email = '$email'";
-								$result6 = mysqli_query($conn, $sql6);
-								$row6 = mysqli_fetch_assoc($result6);
-								$_SESSION['admin_id'] = $row6['admin_id'];
+							header('Location: ./admin/home.php');
+							exit();
+						} else {
+							echo "<script>swal('Invalid!', 'Invalid email or password, please try again!', 'error');</script>";
+						}
+					} else {
+						// Check if user is a professor
+						$sql7 = "SELECT prof_email FROM professor WHERE prof_email = '$email'";
+						$result7 = mysqli_query($conn, $sql7);
+						$row7 = mysqli_fetch_assoc($result7);
 
-								header('Location: ./admin/home.php');
+						if (isset($row7['prof_email']) && $row7['prof_email'] === $email) {
+							$sql8 = "SELECT prof_pass FROM professor WHERE prof_email = '$email'";
+							$result8 = mysqli_query($conn, $sql8);
+							$row8 = mysqli_fetch_assoc($result8);
+
+							if ($row8['prof_pass'] === $pass) {
+								$sql9 = "SELECT prof_id, prof_name FROM professor WHERE prof_email = '$email'";
+								$result9 = mysqli_query($conn, $sql9);
+								$row9 = mysqli_fetch_assoc($result9);
+								$_SESSION['prof_id'] = $row9['prof_id'];
+								$_SESSION['prof_name'] = $row9['prof_name'];
+
+								header('Location: ./professor/home.php');
 								exit();
+							} else {
+								echo "<script>swal('Invalid!', 'Invalid email or password, please try again!', 'error');</script>";
 							}
-							
-							else {
-								?>
-								<script>
-									swal("Invalid!", "Invalid email or password please try again!", "error");
-								</script>
-								<?php
-							}
+						} else {
+							echo "<script>swal('Invalid!', 'Invalid email or password, please try again!', 'error');</script>";
 						}
 					}
 				}
-				?>
+			}
+			?>
 
-			<!-- Registration Form -->
-			<div class="register-content" style="display: none; margin-left: 70px;">
+			<!-- Student Registration Form -->
+			<div class="register-content student-register-content" style="display: none; margin-left: 70px; margin-top: 230px;">
 				<form action="" method="POST">
 					<img src="./img/new3.png" height="100" width="100">
-					<h2 class="title">Register</h2>
+					<h2 class="title">Student Registration</h2>
 					<div class="input-div one">
 						<div class="i">
 							<i class="fas fa-user"></i>
@@ -162,12 +169,99 @@ include("./conn.php");
 							<input type="password" class="input" name="reg_password" required>
 						</div>
 					</div>
-					<input type="submit" class="btn" value="Register" name="register">
-					<p>Already have an account? <a href="#" onclick="toggleForm();">Login here</a></p>
+					<input type="submit" class="btn" value="Register" name="register_student">
+					<p>Already have an account? <a href="#" onclick="toggleForm('login');">Login here</a></p>
+					<p>Are you a professor? <a href="#" onclick="toggleForm('professor');">Register as Professor</a></p>
 				</form>
 			</div>
+
+			<!-- Professor Registration Form -->
+			<div class="register-content professor-register-content" style="display: none; margin-left: 70px; margin-top: 230px;">
+				<form action="" method="POST">
+					<img src="./img/new3.png" height="100" width="100">
+					<h2 class="title">Professor Registration</h2>
+					<div class="input-div one">
+						<div class="i">
+							<i class="fas fa-user"></i>
+						</div>
+						<div class="div">
+							<h5>Professor Name</h5>
+							<input type="text" class="input" name="professor_name" required>
+							</div>
+						</div>
+						<div class="input-div one">
+							<div class="i">
+								<i class="fas fa-id-badge"></i>
+							</div>
+							<div class="div">
+								<h5>Employee Number</h5>
+								<input type="text" class="input" name="professor_number" required>
+							</div>
+						</div>
+						<div class="input-div one">
+							<div class="i">
+								<i class="fas fa-envelope"></i>
+							</div>
+							<div class="div">
+								<h5>Email</h5>
+								<input type="email" class="input" name="professor_email" required>
+							</div>
+						</div>
+						<div class="input-div pass">
+							<div class="i"> 
+								<i class="fas fa-lock"></i>
+							</div>
+							<div class="div">
+								<h5>Password</h5>
+								<input type="password" class="input" name="professor_password" required>
+							</div>
+						</div>
+						<input type="submit" class="btn" value="Register" name="register_professor">
+						<p>Already have an account? <a href="#" onclick="toggleForm('login');">Login here</a></p>
+						<p>Are you a student? <a href="#" onclick="toggleForm('student');">Register as Student</a></p>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
-    <script type="text/javascript" src="js/main.js"></script>
-</body>
+		<script>
+			const inputs = document.querySelectorAll(".input");
+
+			function addcl(){
+				let parent = this.parentNode.parentNode;
+				parent.classList.add("focus");
+			}
+
+			function remcl(){
+				let parent = this.parentNode.parentNode;
+				if(this.value == ""){
+					parent.classList.remove("focus");
+				}
+			}
+
+			function toggleForm(formType) {
+				const loginContent = document.querySelector('.login-content');
+				const studentRegisterContent = document.querySelector('.student-register-content');
+				const professorRegisterContent = document.querySelector('.professor-register-content');
+
+				if (formType === 'login') {
+					loginContent.style.display = 'block';
+					studentRegisterContent.style.display = 'none';
+					professorRegisterContent.style.display = 'none';
+				} else if (formType === 'student') {
+					loginContent.style.display = 'none';
+					studentRegisterContent.style.display = 'block';
+					professorRegisterContent.style.display = 'none';
+				} else if (formType === 'professor') {
+					loginContent.style.display = 'none';
+					studentRegisterContent.style.display = 'none';
+					professorRegisterContent.style.display = 'block';
+				}
+			}
+
+			inputs.forEach(input => {
+				input.addEventListener("focus", addcl);
+				input.addEventListener("blur", remcl);
+			});
+		</script>
+	</body>
 </html>
