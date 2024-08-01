@@ -20,7 +20,7 @@ include("./conn.php");
 		</div>
 		<div class="content">
 			<!-- Login Form -->
-			<div class="login-content" style="margin-left: 70px; margin-top: 230px;">
+			<div class="login-content" style="margin-left: 70px; margin-top: 200px;">
 				<form action="" method="POST">
 					<img src="./img/new3.png">
 					<h2 class="title">Welcome</h2>
@@ -63,7 +63,7 @@ include("./conn.php");
 					$result2 = mysqli_query($conn, $sql2);
 					$row2 = mysqli_fetch_assoc($result2);
 
-					if ($row2['stud_pass'] === $pass) {
+					if (password_verify($pass, $row2['stud_pass'])) {
 						$sql3 = "SELECT stud_id, stud_name FROM student WHERE stud_email = '$email'";
 						$result3 = mysqli_query($conn, $sql3);
 						$row3 = mysqli_fetch_assoc($result3);
@@ -108,7 +108,7 @@ include("./conn.php");
 							$result8 = mysqli_query($conn, $sql8);
 							$row8 = mysqli_fetch_assoc($result8);
 
-							if ($row8['prof_pass'] === $pass) {
+							if (password_verify($pass, $row8['prof_pass'])) {
 								$sql9 = "SELECT prof_id, prof_name FROM professor WHERE prof_email = '$email'";
 								$result9 = mysqli_query($conn, $sql9);
 								$row9 = mysqli_fetch_assoc($result9);
@@ -129,7 +129,7 @@ include("./conn.php");
 			?>
 
 			<!-- Student Registration Form -->
-			<div class="register-content student-register-content" style="display: none; margin-left: 70px; margin-top: 230px;">
+			<div class="register-content student-register-content" style="display: none; margin-left: 70px; margin-top: 200px;">
 				<form action="" method="POST">
 					<img src="./img/new3.png" height="100" width="100">
 					<h2 class="title">Student Registration</h2>
@@ -139,7 +139,7 @@ include("./conn.php");
 						</div>
 						<div class="div">
 							<h5>Student Name</h5>
-							<input type="text" class="input" name="student_name" required>
+							<input type="text" class="input" name="stud_name" required>
 						</div>
 					</div>
 					<div class="input-div one">
@@ -148,7 +148,7 @@ include("./conn.php");
 						</div>
 						<div class="div">
 							<h5>Student Number</h5>
-							<input type="text" class="input" name="student_number" required>
+							<input type="text" class="input" name="stud_number" required>
 						</div>
 					</div>
 					<div class="input-div one">
@@ -157,7 +157,7 @@ include("./conn.php");
 						</div>
 						<div class="div">
 							<h5>Email</h5>
-							<input type="email" class="input" name="reg_email" required>
+							<input type="email" class="input" name="stud_email" required>
 						</div>
 					</div>
 					<div class="input-div pass">
@@ -166,17 +166,17 @@ include("./conn.php");
 						</div>
 						<div class="div">
 							<h5>Password</h5>
-							<input type="password" class="input" name="reg_password" required>
+							<input type="password" class="input" name="stud_pass" required>
 						</div>
 					</div>
-					<input type="submit" class="btn" value="Register" name="register_student">
+					<input type="submit" class="btn" value="Register" name="stud_submit">
 					<p>Already have an account? <a href="#" onclick="toggleForm('login');">Login here</a></p>
 					<p>Are you a professor? <a href="#" onclick="toggleForm('professor');">Register as Professor</a></p>
 				</form>
 			</div>
 
 			<!-- Professor Registration Form -->
-			<div class="register-content professor-register-content" style="display: none; margin-left: 70px; margin-top: 230px;">
+			<div class="register-content professor-register-content" style="display: none; margin-left: 70px; margin-top: 200px;">
 				<form action="" method="POST">
 					<img src="./img/new3.png" height="100" width="100">
 					<h2 class="title">Professor Registration</h2>
@@ -186,7 +186,7 @@ include("./conn.php");
 						</div>
 						<div class="div">
 							<h5>Professor Name</h5>
-							<input type="text" class="input" name="professor_name" required>
+							<input type="text" class="input" name="prof_name" required>
 							</div>
 						</div>
 						<div class="input-div one">
@@ -195,7 +195,7 @@ include("./conn.php");
 							</div>
 							<div class="div">
 								<h5>Employee Number</h5>
-								<input type="text" class="input" name="professor_number" required>
+								<input type="text" class="input" name="prof_number" required>
 							</div>
 						</div>
 						<div class="input-div one">
@@ -204,7 +204,7 @@ include("./conn.php");
 							</div>
 							<div class="div">
 								<h5>Email</h5>
-								<input type="email" class="input" name="professor_email" required>
+								<input type="email" class="input" name="prof_email" required>
 							</div>
 						</div>
 						<div class="input-div pass">
@@ -213,15 +213,59 @@ include("./conn.php");
 							</div>
 							<div class="div">
 								<h5>Password</h5>
-								<input type="password" class="input" name="professor_password" required>
+								<input type="password" class="input" name="prof_pass" required>
 							</div>
 						</div>
-						<input type="submit" class="btn" value="Register" name="register_professor">
+						<input type="submit" class="btn" value="Register" name="prof_submit">
 						<p>Already have an account? <a href="#" onclick="toggleForm('login');">Login here</a></p>
 						<p>Are you a student? <a href="#" onclick="toggleForm('student');">Register as Student</a></p>
 					</form>
 				</div>
 			</div>
+
+			<?php
+			if (isset($_POST['stud_submit'])) {
+				$stud_name = $_POST['stud_name'];
+				$stud_number = $_POST['stud_number'];
+				$stud_email = $_POST['stud_email'];
+				$stud_pass = $_POST['stud_pass'];
+
+				// Encrypt the password
+				$hashed_pass = password_hash($stud_pass, PASSWORD_DEFAULT);
+
+				// SQL query
+				$sql10 = "INSERT INTO student(stud_name, stud_number, stud_email, stud_pass) VALUES('$stud_name','$stud_number','$stud_email','$hashed_pass')";
+
+				// Execute the query
+				if (mysqli_query($conn, $sql10)) {
+					echo "<script>swal('Registered', 'You have been registered', 'success');</script>";
+				} else {
+					echo "<script>swal('Error', 'Registration failed, please try again', 'error');</script>";
+				}
+			}
+
+			if (isset($_POST['prof_submit'])) {
+				$prof_name = $_POST['prof_name'];
+				$prof_number = $_POST['prof_number'];
+				$prof_email = $_POST['prof_email'];
+				$prof_pass = $_POST['prof_pass'];
+
+				// Encrypt the password
+				$hashed_pass = password_hash($prof_pass, PASSWORD_DEFAULT);
+
+				// SQL query
+				$sql11 = "INSERT INTO professor(prof_name, prof_number, prof_email, prof_pass) VALUES('$prof_name','$prof_number','$prof_email','$hashed_pass')";
+
+				// Execute the query
+				if (mysqli_query($conn, $sql11)) {
+					echo "<script>swal('Registered', 'You have been registered', 'success');</script>";
+				} else {
+					echo "<script>swal('Error', 'Registration failed, please try again', 'error');</script>";
+				}
+			}
+			?>
+
+
 		</div>
 		<script>
 			const inputs = document.querySelectorAll(".input");
