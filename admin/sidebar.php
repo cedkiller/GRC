@@ -8,7 +8,7 @@
 
     <h1 class="side_list2">LIST OF PROFESSOR</h1>
     <ul class="side_list3"> 
-        <li><a href="#"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>View Professor's</a></li>
+        <li><a href="./list_prof.php"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>View Professor's</a></li>
     </ul>
 
     <h1 class="side_list2">LIST OF STUDENT</h1>

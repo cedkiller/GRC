@@ -6,7 +6,9 @@
 <?php include("../professor/sidebar.php");?>
 
 <div class="content">
-    <h1>Hello World!</h1>
+    <div class="hidden_animation">
+        <div><h1>Hello World!</h1></div>
+    </div>
 </div>
 
 <?php include("../professor/footer.php");?>

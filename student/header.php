@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('../conn.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,10 +8,11 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRC Examination</title>
-    <link rel="stylesheet" href="../student/css/style3.css">
+    <link rel="stylesheet" href="../student/css/style4.css">
     <link rel="icon" href="../img/new3.png">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://kit.fontawesome.com/75fe70a6d6.js" crossorigin="anonymous"></script>
+    <script defer src="../js/app.js"></script>
 </head>
 <body>
     <!-- header -->

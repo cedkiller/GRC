@@ -21,6 +21,23 @@ html {
     background: lightgray;
 }
 
+/* slide animation */
+
+/* animation scroll */
+
+.hidden_animation {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%);
+    transition: all 1.0s;
+}
+
+.show_animation {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
 /* header */
 .header {
     display: flex;
@@ -110,7 +127,7 @@ html {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    left: -30px; /* Align with the dropdown button */
+    left: -70px; /* Align with the dropdown button */
     opacity: 0;
     transform: scaleY(0.9);
     transform-origin: top;
@@ -170,6 +187,7 @@ html {
 .sidebar-hidden {
     left: -300px; /* Hide sidebar */
 }
+
 
 /* Adjust sidebar width when taskbar is hidden (responsive design) */
 @media (max-width: 768px) {
@@ -248,3 +266,7 @@ html {
         margin-left: 0; /* No extra margin for small screens */
     }
 }
+
+
+/* list_prof.php */
+
