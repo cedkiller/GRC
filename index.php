@@ -22,7 +22,7 @@ include("./conn.php");
 		<div class="content">
 			<!-- Login Form -->
 			<div class="hidden_animation">
-				<div class="login-content" style="margin-left: 70px; margin-top: 200px;">
+				<div class="login-content" style="margin-left: 30px; margin-top: 130px;">
 					<form action="" method="POST">
 						<img src="./img/new3.png">
 						<h2 class="title">Welcome</h2>
@@ -44,7 +44,7 @@ include("./conn.php");
 								<input type="password" class="input" name="password" required>
 							</div>
 						</div>
-						<a href="./forgot2.php">Forgot Password?</a>
+						<a href="./forgot3.php">Forgot Password?</a>
 						<input type="submit" class="btn" name="submit" value="Login">
 						<p>Don't have an account? <a href="#" onclick="toggleForm('student');">Register here</a></p>
 					</form>
@@ -132,7 +132,7 @@ include("./conn.php");
 			?>
 
 			<!-- Student Registration Form -->
-			<div class="register-content student-register-content" style="display: none; margin-left: 70px; margin-top: 200px;">
+			<div class="register-content student-register-content" style="display: none; margin-left: 30px; margin-top: 130px;">
 				<form action="" method="POST">
 					<img src="./img/new3.png" height="100" width="100">
 					<h2 class="title">Student Registration</h2>
@@ -179,7 +179,7 @@ include("./conn.php");
 			</div>
 
 			<!-- Professor Registration Form -->
-			<div class="register-content professor-register-content" style="display: none; margin-left: 70px; margin-top: 200px;">
+			<div class="register-content professor-register-content" style="display: none; margin-left: 30px; margin-top: 130px;">
 				<form action="" method="POST">
 					<img src="./img/new3.png" height="100" width="100">
 					<h2 class="title">Professor Registration</h2>
