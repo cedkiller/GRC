@@ -13,6 +13,12 @@ include('../conn.php');
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://kit.fontawesome.com/75fe70a6d6.js" crossorigin="anonymous"></script>
     <script defer src="../js/app.js"></script>
+    <!-- For Table -->
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+        <!-- Data Table CSS -->
+        <link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
+    <!-- For Table -->
 </head>
 <body>
     <!-- header -->

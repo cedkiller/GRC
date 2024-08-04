@@ -270,3 +270,18 @@ html {
 
 /* list_prof.php */
 
+#example {
+    width:1200px; 
+}
+
+@media screen and (max-width: 768px) {
+    #example {
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #example {
+        width: 300px;
+    }
+}

@@ -2,7 +2,7 @@
 <?php include("../admin/sidebar.php");?>
 
 <?php
-$sql = "SELECT * FROM professor";
+$sql = "SELECT * FROM student";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -13,8 +13,8 @@ $result = mysqli_query($conn, $sql);
          <table id="example" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Employee Number</th>
+                    <th>Student Name</th>
+                    <th>Student Number</th>
                     <th>Email</th>
                     <th>Account Created</th>
                 </tr>
@@ -24,10 +24,10 @@ $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tr>
-                    <td><?php echo $row['prof_name']; ?></td>
-                    <td><?php echo $row['prof_number']; ?></td>
-                    <td><?php echo $row['prof_email']; ?></td>
-                    <td><?php echo $row['prof_created']; ?></td>
+                    <td><?php echo $row['stud_name']; ?></td>
+                    <td><?php echo $row['stud_number']; ?></td>
+                    <td><?php echo $row['stud_email']; ?></td>
+                    <td><?php echo $row['stud_created']; ?></td>
                 </tr>
                 <?php
                 }
@@ -35,8 +35,8 @@ $result = mysqli_query($conn, $sql);
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Name</th>
-                    <th>Employee Number</th>
+                    <th>Student Name</th>
+                    <th>Student Number</th>
                     <th>Email</th>
                     <th>Account Created</th>
                 </tr>
