@@ -265,3 +265,108 @@ html {
         margin-left: 0; /* No extra margin for small screens */
     }
 }
+
+/* add_subject.php */
+
+.div_sub {
+    height: 450px;
+    width: 450px;
+    margin-top: 100px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0px #f50c0c;
+}
+
+.img_sub {
+    height: 100px;
+    width: 100px;
+    margin-top: 70px;
+}
+
+.input_sub {
+    height: 40px;
+    width: 400px;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 0px 0px 5px lightgray;
+    background: none;
+    padding-left: 15px;
+}
+
+.success_sub {
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 10px;
+    background: blue;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+}
+
+.success_sub:hover {
+    opacity: 0.5;
+}
+
+.error_sub {
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 10px;
+    background: red;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+}
+
+.error_sub:hover {
+    opacity: 0.5;
+}
+
+/* subject.php */
+
+#example {
+    width:1200px; 
+}
+
+@media screen and (max-width: 768px) {
+    #example {
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #example {
+        width: 300px;
+    }
+}
+
+#edit_sub {
+    font-size: 25px;
+    color: blue;
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+}
+
+#edit_sub:hover {
+    opacity: 0.5;
+}
+
+#delete_sub {
+    font-size: 25px;
+    color: red;
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+}
+
+#delete_sub:hover {
+    opacity: 0.5;
+}

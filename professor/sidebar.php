@@ -1,23 +1,20 @@
-<?php
-
-?>
 
 <!-- sidebar -->
 <div class="sidebar" id="sidebar">
-    <a href="#" class="side_list">DASHBOARD</a>
+    <a href="./home.php" class="side_list">DASHBOARD</a>
 
     <h1 class="side_list2">MANAGE SUBJECT</h1>
     <ul class="side_list3"> 
-        <li><a href="#"><i class="fa-solid fa-book" style="margin-right: 15px;"></i>Add Subject</a></li>
+        <li><a href="./add_subject.php"><i class="fa-solid fa-book" style="margin-right: 15px;"></i>Add Subject</a></li>
         <br>
-        <li><a href="#"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>Manage Subject</a></li>
+        <li><a href="./subject.php"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>Manage Subject</a></li>
     </ul>
 
     <h1 class="side_list2">MANAGE SECTION</h1>
     <ul class="side_list3"> 
-        <li><a href="#"><i class="fa-solid fa-table" style="margin-right: 15px;"></i>Add Section</a></li>
+        <li><a href="./add_section.php"><i class="fa-solid fa-table" style="margin-right: 15px;"></i>Add Section</a></li>
         <br>
-        <li><a href="#"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>Manage Section</a></li>
+        <li><a href="./section.php"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>Manage Section</a></li>
     </ul>
 
     <h1 class="side_list2">MASTERLIST</h1>
