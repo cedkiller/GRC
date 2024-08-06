@@ -28,6 +28,7 @@ if (isset($_GET['id']))
 <div class="content">
     <div style="display: flex; justify-content: center;" class="hidden_animation">
         <div class="div_sub">
+            <img src="../img/exam2.jpg" alt="exam" class="img2_sub">
             <center><img src="../img/new3.png" alt="new3.png" class="img_sub"></center>
             <br>
             <div style="display: flex; justify-content: center;">

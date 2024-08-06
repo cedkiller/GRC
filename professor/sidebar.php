@@ -24,7 +24,7 @@
 
     <h1 class="side_list2">MANAGE EXAM</h1>
     <ul class="side_list3"> 
-        <li><a href="#"><i class="fa-regular fa-window-restore" style="margin-right: 15px;"></i>Add Exam</a></li>
+        <li><a href="./add_exam.php"><i class="fa-regular fa-window-restore" style="margin-right: 15px;"></i>Add Exam</a></li>
         <br>
         <li><a href="#"><i class="fa-solid fa-list" style="margin-right: 15px;"></i>Manage Exam</a></li>
     </ul>

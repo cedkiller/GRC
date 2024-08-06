@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2024 at 02:50 AM
+-- Generation Time: Aug 06, 2024 at 03:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `grc_exam`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `add_exam`
+--
+
+CREATE TABLE `add_exam` (
+  `add_exam_id` int(11) NOT NULL,
+  `add_exam_subject` varchar(255) NOT NULL,
+  `add_exam_section` varchar(255) NOT NULL,
+  `add_exam_timer` int(11) NOT NULL,
+  `add_exam_sched` varchar(255) NOT NULL,
+  `add_exam_title` varchar(255) NOT NULL,
+  `add_exam_description` varchar(255) NOT NULL,
+  `add_exam_code` int(11) NOT NULL,
+  `add_exam_status` varchar(255) NOT NULL,
+  `add_exam_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -183,6 +202,12 @@ INSERT INTO `subject` (`sub_id`, `sub_name`, `sub_created`) VALUES
 --
 
 --
+-- Indexes for table `add_exam`
+--
+ALTER TABLE `add_exam`
+  ADD PRIMARY KEY (`add_exam_id`);
+
+--
 -- Indexes for table `admin_tbl`
 --
 ALTER TABLE `admin_tbl`
@@ -215,6 +240,12 @@ ALTER TABLE `subject`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `add_exam`
+--
+ALTER TABLE `add_exam`
+  MODIFY `add_exam_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin_tbl`
