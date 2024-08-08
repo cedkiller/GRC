@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2024 at 03:37 AM
+-- Generation Time: Aug 08, 2024 at 03:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -37,8 +37,21 @@ CREATE TABLE `add_exam` (
   `add_exam_description` varchar(255) NOT NULL,
   `add_exam_code` int(11) NOT NULL,
   `add_exam_status` varchar(255) NOT NULL,
+  `add_exam_points` int(11) DEFAULT NULL,
+  `add_exam_prof` varchar(255) DEFAULT NULL,
   `add_exam_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `add_exam`
+--
+
+INSERT INTO `add_exam` (`add_exam_id`, `add_exam_subject`, `add_exam_section`, `add_exam_timer`, `add_exam_sched`, `add_exam_title`, `add_exam_description`, `add_exam_code`, `add_exam_status`, `add_exam_points`, `add_exam_prof`, `add_exam_created`) VALUES
+(4, 'Computer Programming 1', 'IT-101', 600, '2024-08-10', 'Prelim Exam', 'Take this exam on or before the deadline', 6960, 'pending', NULL, 'Ramon Rodriquez', '2024-08-07 23:43:30'),
+(5, 'Introduction to Human Computer Interaction', 'IT-102', 600, '2024-08-10', 'Prelim Exam', 'Take this exam on or before the deadline', 5119, 'pending', NULL, 'Ramon Rodriquez', '2024-08-07 23:44:20'),
+(6, 'Computer Hardware and Troubleshooting', 'IT-102', 600, '2024-08-10', 'Prelim Exam', 'Take this exam on or before the deadline', 1029, 'pending', NULL, 'Ramon Rodriquez', '2024-08-07 23:44:53'),
+(7, 'Data Structures and Algorithm', 'IT-202', 600, '2024-08-10', 'Prelim Exam', 'Take this exam on or before the deadline', 9427, 'pending', NULL, 'Ramon Rodriquez', '2024-08-07 23:45:33'),
+(11, 'Object Oriented Programming', 'IT-202', 600, '2024-08-10', 'Prelim Exam', 'Take this exam on or before the deadline', 7562, 'pending', NULL, 'Ramon Rodriquez', '2024-08-08 01:23:12');
 
 -- --------------------------------------------------------
 
@@ -245,7 +258,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `add_exam`
 --
 ALTER TABLE `add_exam`
-  MODIFY `add_exam_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `add_exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `admin_tbl`
